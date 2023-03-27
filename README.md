@@ -1,2 +1,1 @@
-# bombjack
-Bomb Jack disassembly and ongoing exploration of arcade version.
+[Bomb Jack docs](https://gitendo.github.io/bombjack/) static content.
