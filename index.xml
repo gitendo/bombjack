@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Welcome on Bomb Jack Docs</title>
-    <link>https://gitendo.github.io/bombjack/</link>
-    <description>Recent content in Welcome on Bomb Jack Docs</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 19 Mar 2023 21:06:08 +0100</lastBuildDate><atom:link href="https://gitendo.github.io/bombjack/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome on Bomb Jack Docs</title><link>https://gitendo.github.io/bombjack/</link><description>Recent content in Welcome on Bomb Jack Docs</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 19 Mar 2023 21:06:08 +0100</lastBuildDate><atom:link href="https://gitendo.github.io/bombjack/index.xml" rel="self" type="application/rss+xml"/><item><title>Memory Map</title><link>https://gitendo.github.io/bombjack/memory-map/</link><pubDate>Tue, 14 Mar 2023 11:46:26 +0100</pubDate><guid>https://gitendo.github.io/bombjack/memory-map/</guid><description>&lt;p>The following table shows a short overview of Bomb Jack memory map as seen and used by Z80.&lt;/p></description></item><item><title>Dip Switch Settings</title><link>https://gitendo.github.io/bombjack/dip-switch/</link><pubDate>Thu, 16 Mar 2023 21:09:42 +0100</pubDate><guid>https://gitendo.github.io/bombjack/dip-switch/</guid><description>&lt;p>Bomb Jack PCB has two dip switches to configure game settings. How the game accesses and makes use of them is explained right here.&lt;/p></description></item><item><title>Sources</title><link>https://gitendo.github.io/bombjack/sources/</link><pubDate>Sun, 26 Mar 2023 12:34:39 +0200</pubDate><guid>https://gitendo.github.io/bombjack/sources/</guid><description>&lt;p>Here are external sources I&amp;rsquo;ve found useful and used in this project:&lt;/p></description></item></channel></rss>

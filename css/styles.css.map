@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "styles.css",
-	"sourceRoot": "D:/Projects/_bombjack/site",
+	"sourceRoot": "D:/Projects/_bombjack/hugo",
 	"sources": [
 		"themes/compose/assets/sass/main.sass",
 		"themes/compose/assets/sass/_variables.sass",
