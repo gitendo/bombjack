@@ -10,7 +10,7 @@ weight: 1
 
 {{< column >}}
 
-to my personal Bomb Jack documentation project based on software disassembly, reverse engineering and other available sources.
+to my personal Bomb Jack documentation project based on software disassembly, reverse engineering and other available [sources](./sources/).
 
 You've probably [dissected Bomb Jack](https://floooh.github.io/2018/10/06/bombjack.html) along with Andre Weissflog. If not I really recommend reading it. Instead of emulating the game I've been digging into the software side to figure out inner workings and hidden secrets of this instant classic.  
 
@@ -22,6 +22,8 @@ Current progress:
 - [ ] reverse engineering (WIP)
 - [ ] documentation (WIP)
 {{< /tip >}}
+
+{{< button "./memory-map/" "Explore">}}  
 
 {{< /column >}}
 
