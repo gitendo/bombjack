@@ -29,7 +29,7 @@ The following table shows a short overview of Bomb Jack memory map as seen and u
 | $B001   | -     | I/O  | RO     | joystick 2 |
 | $B002   | -     | I/O  | RO     | coins and start button |
 | $B003   | -     | I/O  | RW     | watchdog reset |
-| $B004   | -     | I/O  | RW     | [dip switch 1 and screen flip](/dip-switch/#ds_1) |
-| $B005   | -     | I/O  | RO     | [dip switch 2](/dip-switch/#ds_2) |
+| $B004   | -     | I/O  | RW     | [dip switch 1 and screen flip](../dip-switch/#ds_1) |
+| $B005   | -     | I/O  | RO     | [dip switch 2](../dip-switch/#ds_2) |
 | $B006   | -     | I/O  | RW     | sound latch |
 | $C000   | $1FFF | ROM  | RO     | 13.1r |
