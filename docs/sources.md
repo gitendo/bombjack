@@ -6,7 +6,7 @@ draft: true
 weight: 16
 ---
 
-Here are external sources I've found useful and used in this project:
+Here are external sources I've found useful and I've used in this project:
 
 <!--more-->
 
