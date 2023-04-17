@@ -3,7 +3,7 @@ title: "Sources"
 date: 2023-03-26T12:34:39+02:00
 description: "Bomb Jack documentation external sources."
 draft: true
-weight: 16
+weight: 20
 ---
 
 Here are external sources I've found useful and I've used in this project:

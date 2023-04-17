@@ -3,7 +3,7 @@ title: "Dip Switch Settings"
 date: 2023-03-16T21:09:42+01:00
 description: "Bomb Jack dip switch settings."
 draft: false
-weight: 3
+weight: 17
 ---
 
 Bomb Jack PCB has two dip switches to configure game settings. How the game accesses and makes use of them is explained right here.
