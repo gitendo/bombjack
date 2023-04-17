@@ -2,7 +2,7 @@
 title: "Dip Switch Settings"
 date: 2023-03-16T21:09:42+01:00
 description: "Bomb Jack dip switch settings."
-draft: true
+draft: false
 weight: 3
 ---
 

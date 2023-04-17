@@ -2,7 +2,7 @@
 title: "Memory Map"
 date: 2023-03-14T11:46:26+01:00
 description: "Bomb Jack memory map overview."
-draft: true
+draft: false
 weight: 2
 ---
 
