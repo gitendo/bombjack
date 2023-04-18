@@ -20,11 +20,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gitendo.github.io/bombjack/character_map/" /><meta property="article:section" content="" />
 <meta property="article:published_time" content="2023-04-17T09:50:57+02:00" />
-<meta property="article:modified_time" content="2023-04-17T12:10:30+02:00" />
+<meta property="article:modified_time" content="2023-04-18T13:44:48+02:00" />
 <meta itemprop="name" content="Character Map">
 <meta itemprop="description" content="BG_1 character map description."><meta itemprop="datePublished" content="2023-04-17T09:50:57+02:00" />
-<meta itemprop="dateModified" content="2023-04-17T12:10:30+02:00" />
-<meta itemprop="wordCount" content="144">
+<meta itemprop="dateModified" content="2023-04-18T13:44:48+02:00" />
+<meta itemprop="wordCount" content="150">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Character Map"/>
 <meta name="twitter:description" content="BG_1 character map description."/>
@@ -105,10 +105,11 @@
   <section class="section aside_inner">
     <h2 class="section_title"><a  href="https://gitendo.github.io/bombjack/" class="group">Welcome</a></h2>
       <section class="" id="docs-welcome">
-        <h3 class="section_link"><a id="docs-memory-map" href="https://gitendo.github.io/bombjack/memory-map/">Memory Map</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-memory-map" href="https://gitendo.github.io/bombjack/memory_map/">Memory Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link active"><a id="docs-character-map" href="https://gitendo.github.io/bombjack/character_map/">Character Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-attribute-map" href="https://gitendo.github.io/bombjack/attribute_map/">Attribute Map</a></h3><nav id="TableOfContents"></nav>
-        <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip-switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
+        <h3 class="section_link"><a id="docs-object-attribute-memory" href="https://gitendo.github.io/bombjack/object_memory/">Object Attribute Memory</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip_switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
   <ul>
     <li><a href="#ds_1">DS_1</a></li>
     <li><a href="#ds_2">DS_2</a></li>
@@ -121,26 +122,26 @@
 
   <main class="content">
     <h1>Character Map</h1>
-      <small>Updated: April 17, 2023 at 12:10 CEST</small><p>Bomb Jack effectively uses 3 layers of graphic: BG_0, BG_1 and OBJ. BG_1 is explained here.</p>
+      <small>Updated: April 18, 2023 at 13:44 CEST</small><p>Character map combined with <a href="../attribute_map/">attribute map</a> creates BG_1 - second of the three layers of graphics.</p>
 
 <div class="tip">
   <p><code>$9000 - $93FF</code> (Read/Write)</p>
-<p>💡 Columns are being organized from right to left. First visible column starts at <code>$93A0</code> and ends at <code>$93BF</code>. Respectively, last visible column starts at <code>$9040</code> and ends at <code>$905F</code>. These are also addresses for top left, bottom left, top right and bottom right characters visible on the layer.</p>
+<p>💡 Columns are being stored in RAM from right to left. First visible column starts at <code>$93A0</code> and ends at <code>$93BF</code>. Last visible column starts at <code>$9040</code> and ends at <code>$905F</code> respectively. These are also addresses for top left, bottom left, top right and bottom right characters visible on the layer.</p>
 
 </div>
 
-<p>BG_1 is used for text, bottom part of title screen logo, HUD, stage borders, platforms and bombs. Main features are:</p>
+<p>BG_1 is used for text, bottom part of title screen logo, HUD, stage borders, platforms and bombs. It has priority above BG_0 but below <a href="../object_memory/">OBJ</a>. Main features are:</p>
 <ul>
 <li>array of 32 columns, 32 rows each</li>
-<li>each entry is 1 byte and represents character code (8x8 pixel block also called tile) from bank 0</li>
-<li>up to 512 unique characters is possible thanks to 5th bit of corresponding attribute map entry</li>
-<li>first and last two columns remain off screen (Bomb Jack screen resolution is 224*256)</li>
+<li>each entry is 1 byte and represents 1 character code (8x8 pixel block also called tile) from bank 0</li>
+<li>up to 512 unique characters is possible thanks to corresponding <a href="../attribute_map/">attribute map</a> entry</li>
+<li>first and last two columns remain off screen (screen resolution is 224*256)</li>
 </ul>
     <div class="pager">
   
     
     <div class="pager_item prev">
-      <a href="https://gitendo.github.io/bombjack/memory-map/" class="pager_link button" title="Memory Map" rel="prev">
+      <a href="https://gitendo.github.io/bombjack/memory_map/" class="pager_link button" title="Memory Map" rel="prev">
         <span class="pager_label">Memory Map</span>
       </a>
     </div>

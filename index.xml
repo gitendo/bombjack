@@ -8,10 +8,10 @@
     <lastBuildDate>Sun, 19 Mar 2023 21:06:08 +0100</lastBuildDate><atom:link href="https://gitendo.github.io/bombjack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Memory Map</title>
-      <link>https://gitendo.github.io/bombjack/memory-map/</link>
+      <link>https://gitendo.github.io/bombjack/memory_map/</link>
       <pubDate>Tue, 14 Mar 2023 11:46:26 +0100</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/memory-map/</guid>
+      <guid>https://gitendo.github.io/bombjack/memory_map/</guid>
       <description>&lt;p&gt;The following table shows a short overview of Bomb Jack memory map as seen and used by Z80.&lt;/p&gt;</description>
     </item>
     
@@ -21,7 +21,7 @@
       <pubDate>Mon, 17 Apr 2023 09:50:57 +0200</pubDate>
       
       <guid>https://gitendo.github.io/bombjack/character_map/</guid>
-      <description>&lt;p&gt;Bomb Jack effectively uses 3 layers of graphic: BG_0, BG_1 and OBJ. BG_1 is explained here.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Character map combined with &lt;a href=&#34;../attribute_map/&#34;&gt;attribute map&lt;/a&gt; creates BG_1 - second of the three layers of graphics.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,15 +30,24 @@
       <pubDate>Mon, 17 Apr 2023 12:10:43 +0200</pubDate>
       
       <guid>https://gitendo.github.io/bombjack/attribute_map/</guid>
-      <description>&lt;p&gt;Attribute map is strictly related to character map, both are used by BG_1 layer.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Attribute map is strictly related to &lt;a href=&#34;../character_map/&#34;&gt;character map&lt;/a&gt;, both are used to create BG_1 layer.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Object Attribute Memory</title>
+      <link>https://gitendo.github.io/bombjack/object_memory/</link>
+      <pubDate>Mon, 17 Apr 2023 18:54:39 +0200</pubDate>
+      
+      <guid>https://gitendo.github.io/bombjack/object_memory/</guid>
+      <description>&lt;p&gt;Object attribute memory holds the objects to be displayed (also reffered as sprites) and their attributes. It creates OBJ - last of the three layers of graphics.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Dip Switch Settings</title>
-      <link>https://gitendo.github.io/bombjack/dip-switch/</link>
+      <link>https://gitendo.github.io/bombjack/dip_switch/</link>
       <pubDate>Thu, 16 Mar 2023 21:09:42 +0100</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/dip-switch/</guid>
+      <guid>https://gitendo.github.io/bombjack/dip_switch/</guid>
       <description>&lt;p&gt;Bomb Jack PCB has two dip switches to configure game settings. How the game accesses and makes use of them is explained right here.&lt;/p&gt;</description>
     </item>
     

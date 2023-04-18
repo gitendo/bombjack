@@ -15,19 +15,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Poppins:wght@300;400;500;700&family=Source+Code+Pro:wght@300;400;700&display=swap" rel="stylesheet">
-<title>Memory Map | Bomb Jack Docs</title><meta property="og:title" content="Memory Map" />
-<meta property="og:description" content="Bomb Jack memory map overview." />
+<title>Object Attribute Memory | Bomb Jack Docs</title><meta property="og:title" content="Object Attribute Memory" />
+<meta property="og:description" content="Object attribute map overview." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://gitendo.github.io/bombjack/memory-map/" /><meta property="article:section" content="" />
-<meta property="article:published_time" content="2023-03-14T11:46:26+01:00" />
-<meta property="article:modified_time" content="2023-04-17T09:37:39+02:00" />
-<meta itemprop="name" content="Memory Map">
-<meta itemprop="description" content="Bomb Jack memory map overview."><meta itemprop="datePublished" content="2023-03-14T11:46:26+01:00" />
-<meta itemprop="dateModified" content="2023-04-17T09:37:39+02:00" />
-<meta itemprop="wordCount" content="141">
+<meta property="og:url" content="https://gitendo.github.io/bombjack/object_memory/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2023-04-17T18:54:39+02:00" />
+<meta property="article:modified_time" content="2023-04-18T13:44:48+02:00" />
+<meta itemprop="name" content="Object Attribute Memory">
+<meta itemprop="description" content="Object attribute map overview."><meta itemprop="datePublished" content="2023-04-17T18:54:39+02:00" />
+<meta itemprop="dateModified" content="2023-04-18T13:44:48+02:00" />
+<meta itemprop="wordCount" content="227">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Memory Map"/>
-<meta name="twitter:description" content="Bomb Jack memory map overview."/>
+<meta name="twitter:title" content="Object Attribute Memory"/>
+<meta name="twitter:description" content="Object attribute map overview."/>
 
 
 <link rel="stylesheet" href="https://gitendo.github.io/bombjack/css/styles.c69e6e19162bb7aa70c546bfd50f04e024aa8b69a046d02d210427d4d916a9662bc0036e827465221414a91dcc4e8887c4c13fb111629b3fb14e7ab791be85f8.css" integrity="sha512-xp5uGRYrt6pwxUa/1Q8E4CSqi2mgRtAtIQQn1NkWqWYrwANugnRlIhQUqR3MToiHxME/sRFimz&#43;xTnq3kb6F&#43;A==">
@@ -35,7 +35,7 @@
 
 
 
-  <meta name="description" content="Bomb Jack memory map overview.">
+  <meta name="description" content="Object attribute map overview.">
 
 
 </head>
@@ -105,10 +105,11 @@
   <section class="section aside_inner">
     <h2 class="section_title"><a  href="https://gitendo.github.io/bombjack/" class="group">Welcome</a></h2>
       <section class="" id="docs-welcome">
-        <h3 class="section_link active"><a id="docs-memory-map" href="https://gitendo.github.io/bombjack/memory-map/">Memory Map</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-memory-map" href="https://gitendo.github.io/bombjack/memory_map/">Memory Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-character-map" href="https://gitendo.github.io/bombjack/character_map/">Character Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-attribute-map" href="https://gitendo.github.io/bombjack/attribute_map/">Attribute Map</a></h3><nav id="TableOfContents"></nav>
-        <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip-switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
+        <h3 class="section_link active"><a id="docs-object-attribute-memory" href="https://gitendo.github.io/bombjack/object_memory/">Object Attribute Memory</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip_switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
   <ul>
     <li><a href="#ds_1">DS_1</a></li>
     <li><a href="#ds_2">DS_2</a></li>
@@ -120,158 +121,91 @@
 </aside>
 
   <main class="content">
-    <h1>Memory Map</h1>
-      <small>Updated: April 17, 2023 at 09:37 CEST</small><p>The following table shows a short overview of Bomb Jack memory map as seen and used by Z80.</p>
-<section class="spacer"  >
-</section>
+    <h1>Object Attribute Memory</h1>
+      <small>Updated: April 18, 2023 at 13:44 CEST</small><p>Object attribute memory holds the objects to be displayed (also reffered as sprites) and their attributes. It creates OBJ - last of the three layers of graphics.</p>
 
+<div class="tip">
+  <p><code>$9820 - $987F</code> (Write Only)</p>
+<p>💡
+OAM mirror is stored in RAM at <code>$8500</code> where it&rsquo;s being freely manipulated. OAM update is done during VBLANK - this prevents glitches and is commonly used method. During update objects are sorted, 32*32 ones are stored from the beginning of OAM and 16*16 from the end. Finally <code>$9A00</code> register is updated with value equal to sum of 32*32 objects + 3 (refer to routine at <code>$0958</code>).</p>
+
+</div>
+
+<p>The hardware allows 24 independent objects 16*16 or 32*32 pixels each with dedicated palette (0-15). OAM effectively creates 3rd layer of graphic which has the highest priority - OBJ is displayed over BG_1 which is displayed over BG_0. Each each of 24 entries in the map takes 4 bytes with the following meaning:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Address</th>
-<th style="text-align:left">Size</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:center">Access</th>
+<th style="text-align:left">Bits</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">$0000</td>
-<td style="text-align:left">$1FFF</td>
-<td style="text-align:left">ROM</td>
-<td style="text-align:center">RO</td>
-<td style="text-align:left">09_j01b.bin</td>
+<td style="text-align:left">0 - 6</td>
+<td style="text-align:left">object id (0-127 in case of 16*16 and 0-31 for 32*32 objects)</td>
 </tr>
 <tr>
-<td style="text-align:left">$2000</td>
-<td style="text-align:left">$3FFF</td>
-<td style="text-align:left">ROM</td>
-<td style="text-align:center">RO</td>
-<td style="text-align:left">10_101b.bin</td>
+<td style="text-align:left">7</td>
+<td style="text-align:left">toggles between 16*16 (0) and 32*32 (1) objects</td>
 </tr>
 <tr>
-<td style="text-align:left">$4000</td>
-<td style="text-align:left">$5FFF</td>
-<td style="text-align:left">ROM</td>
-<td style="text-align:center">RO</td>
-<td style="text-align:left">11_m01b.bin</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"> </td>
 </tr>
 <tr>
-<td style="text-align:left">$6000</td>
-<td style="text-align:left">$7FFF</td>
-<td style="text-align:left">ROM</td>
-<td style="text-align:center">RO</td>
-<td style="text-align:left">12_n01b.bin</td>
+<td style="text-align:left">0 - 3</td>
+<td style="text-align:left">object palette id (0-15)</td>
 </tr>
 <tr>
-<td style="text-align:left">$8000</td>
-<td style="text-align:left">$0FFF</td>
-<td style="text-align:left">RAM</td>
-<td style="text-align:center">RW</td>
-<td style="text-align:left">general purpose RAM</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">seems unused</td>
 </tr>
 <tr>
-<td style="text-align:left">$9000</td>
-<td style="text-align:left">$03FF</td>
-<td style="text-align:left">VRAM</td>
-<td style="text-align:center">RW</td>
-<td style="text-align:left">tile map</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">not used by hardware, game uses it to sort objects by size which hardly makes any sense</td>
 </tr>
 <tr>
-<td style="text-align:left">$9400</td>
-<td style="text-align:left">$03FF</td>
-<td style="text-align:left">VRAM</td>
-<td style="text-align:center">RW</td>
-<td style="text-align:left">tile attribute map</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">flips object vertically</td>
 </tr>
 <tr>
-<td style="text-align:left">$9820</td>
-<td style="text-align:left">$005F</td>
-<td style="text-align:left">VRAM</td>
-<td style="text-align:center">RW</td>
-<td style="text-align:left">sprite / attribute map</td>
+<td style="text-align:left">7</td>
+<td style="text-align:left">flips object horizontally</td>
 </tr>
 <tr>
-<td style="text-align:left">$9C00</td>
-<td style="text-align:left">$00FF</td>
-<td style="text-align:left">CRAM</td>
-<td style="text-align:center">WO</td>
-<td style="text-align:left">palette data</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"> </td>
 </tr>
 <tr>
-<td style="text-align:left">$9E00</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">I/O</td>
-<td style="text-align:center">WO</td>
-<td style="text-align:left">background picture select</td>
+<td style="text-align:left">0 - 7</td>
+<td style="text-align:left">object x coordinate</td>
 </tr>
 <tr>
-<td style="text-align:left">$B000</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">I/O</td>
-<td style="text-align:center">RW</td>
-<td style="text-align:left">joystick 1 and NMI mask</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"> </td>
 </tr>
 <tr>
-<td style="text-align:left">$B001</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">I/O</td>
-<td style="text-align:center">RO</td>
-<td style="text-align:left">joystick 2</td>
-</tr>
-<tr>
-<td style="text-align:left">$B002</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">I/O</td>
-<td style="text-align:center">RO</td>
-<td style="text-align:left">coins and start button</td>
-</tr>
-<tr>
-<td style="text-align:left">$B003</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">I/O</td>
-<td style="text-align:center">RW</td>
-<td style="text-align:left">watchdog reset</td>
-</tr>
-<tr>
-<td style="text-align:left">$B004</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">I/O</td>
-<td style="text-align:center">RW</td>
-<td style="text-align:left"><a href="../dip-switch/#ds_1">dip switch 1 and screen flip</a></td>
-</tr>
-<tr>
-<td style="text-align:left">$B005</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">I/O</td>
-<td style="text-align:center">RO</td>
-<td style="text-align:left"><a href="../dip-switch/#ds_2">dip switch 2</a></td>
-</tr>
-<tr>
-<td style="text-align:left">$B006</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">I/O</td>
-<td style="text-align:center">RW</td>
-<td style="text-align:left">sound latch</td>
-</tr>
-<tr>
-<td style="text-align:left">$C000</td>
-<td style="text-align:left">$1FFF</td>
-<td style="text-align:left">ROM</td>
-<td style="text-align:center">RO</td>
-<td style="text-align:left">13.1r</td>
+<td style="text-align:left">0 - 7</td>
+<td style="text-align:left">object y coordinate</td>
 </tr>
 </tbody>
 </table>
-    <div class="pager pager_lean">
+    <div class="pager">
+  
+    
+    <div class="pager_item prev">
+      <a href="https://gitendo.github.io/bombjack/attribute_map/" class="pager_link button" title="Attribute Map" rel="prev">
+        <span class="pager_label">Attribute Map</span>
+      </a>
+    </div>
+    
   
 
   
     
     <div class="pager_item next">
-      <a href="https://gitendo.github.io/bombjack/character_map/" class="pager_link button" title="Character Map" rel="next">
-        <span class="pager_label">Character Map</span>
+      <a href="https://gitendo.github.io/bombjack/dip_switch/" class="pager_link button" title="Dip Switch Settings" rel="next">
+        <span class="pager_label">Dip Switch Settings</span>
       </a>
     </div>
     
