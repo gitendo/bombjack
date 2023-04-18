@@ -23,7 +23,7 @@ Current progress:
 - [ ] documentation (WIP)
 {{< /tip >}}
 
-{{< button "./memory-map/" "Explore">}}  
+{{< button "./memory_map/" "Explore">}}  
 
 {{< /column >}}
 
