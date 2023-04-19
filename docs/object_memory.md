@@ -14,10 +14,12 @@ Object attribute memory holds the objects to be displayed (also reffered as spri
 `$9820 - $987F` (Write Only)
 
 :bulb:
-OAM mirror is stored in RAM at `$8500` where it's being freely manipulated. OAM update is done during VBLANK - this prevents glitches and is commonly used method. During update objects are sorted, 32\*32 ones are stored from the beginning of OAM and 16\*16 from the end. Finally `$9A00` register is updated with value equal to sum of 32\*32 objects + 3 (refer to routine at `$0958`).
+OAM mirror is stored in RAM at `$8500` where it's being freely manipulated. OAM update is done during VBLANK - this prevents glitches and is commonly used method. During update objects from mirror are sorted, 32\*32 ones are stored at the beginning of OAM and 16\*16 from the end. At exit `$9A00` register is updated with value equal to sum of 32\*32 objects + 3 (refer to routine at `$0958`).
 {{< /tip >}}
 
-The hardware allows 24 independent objects 16\*16 or 32\*32 pixels each with dedicated palette (0-15). OAM effectively creates 3rd layer of graphic which has the highest priority - OBJ is displayed over BG_1 which is displayed over BG_0. Each each of 24 entries in the map takes 4 bytes with the following meaning:
+Objects are stored in character format (16x16 and 32x32 pixels) but can be moved independently and displayed anywhere on the screen. It's possible to have graphics for 128 objects of 16\*16 size and 32 objects of 32\*32 size. Obviously there's a display limit. Hardware allows up to 24 objects on the screen if they're 16\*16 pixels. For 32\*32 objects this limit is halved (:warning: just a guess, not verified yet). Apparently it is possible to mix objects of different sizes which Bomb Jack does in some simple way. Each object has its own palette applied and migh be flipped horizontally or vertically by hardware. OAM effectively creates 3rd layer of graphic - OBJ, which has the highest priority and is displayed over BG_1 which is displayed over BG_0.
+
+To display an object there must be valid entry in OAM. Each of 24 entries takes 4 bytes with the following meaning:
 
 
 | Bits  | Description                                                     |
@@ -27,7 +29,7 @@ The hardware allows 24 independent objects 16\*16 or 32\*32 pixels each with ded
 |       | &nbsp;                                                          |
 | 0 - 3 | object palette id (0-15)                                        |
 | 4     | seems unused                                                    |
-| 5     | not used by hardware, game uses it to sort objects by size which hardly makes any sense |
+| 5     | not used by hardware, game uses it to sort objects by size      |
 | 6     | flips object vertically                                         |
 | 7     | flips object horizontally                                       |
 |       | &nbsp;                                                          |
