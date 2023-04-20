@@ -43,6 +43,15 @@
     </item>
     
     <item>
+      <title>Color Palette Memory</title>
+      <link>https://gitendo.github.io/bombjack/color_memory/</link>
+      <pubDate>Wed, 19 Apr 2023 14:00:28 +0200</pubDate>
+      
+      <guid>https://gitendo.github.io/bombjack/color_memory/</guid>
+      <description>&lt;p&gt;Color palette memory holds user defined palettes. They can be applied to characters and objects used to create graphics layers.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Dip Switch Settings</title>
       <link>https://gitendo.github.io/bombjack/dip_switch/</link>
       <pubDate>Thu, 16 Mar 2023 21:09:42 +0100</pubDate>

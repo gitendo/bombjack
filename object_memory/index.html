@@ -20,11 +20,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gitendo.github.io/bombjack/object_memory/" /><meta property="article:section" content="" />
 <meta property="article:published_time" content="2023-04-17T18:54:39+02:00" />
-<meta property="article:modified_time" content="2023-04-18T13:44:48+02:00" />
+<meta property="article:modified_time" content="2023-04-20T13:22:16+02:00" />
 <meta itemprop="name" content="Object Attribute Memory">
 <meta itemprop="description" content="Object attribute map overview."><meta itemprop="datePublished" content="2023-04-17T18:54:39+02:00" />
-<meta itemprop="dateModified" content="2023-04-18T13:44:48+02:00" />
-<meta itemprop="wordCount" content="227">
+<meta itemprop="dateModified" content="2023-04-20T13:22:16+02:00" />
+<meta itemprop="wordCount" content="322">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Object Attribute Memory"/>
 <meta name="twitter:description" content="Object attribute map overview."/>
@@ -109,6 +109,7 @@
         <h3 class="section_link"><a id="docs-character-map" href="https://gitendo.github.io/bombjack/character_map/">Character Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-attribute-map" href="https://gitendo.github.io/bombjack/attribute_map/">Attribute Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link active"><a id="docs-object-attribute-memory" href="https://gitendo.github.io/bombjack/object_memory/">Object Attribute Memory</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-color-palette-memory" href="https://gitendo.github.io/bombjack/color_memory/">Color Palette Memory</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip_switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
   <ul>
     <li><a href="#ds_1">DS_1</a></li>
@@ -122,16 +123,17 @@
 
   <main class="content">
     <h1>Object Attribute Memory</h1>
-      <small>Updated: April 18, 2023 at 13:44 CEST</small><p>Object attribute memory holds the objects to be displayed (also reffered as sprites) and their attributes. It creates OBJ - last of the three layers of graphics.</p>
+      <small>Updated: April 20, 2023 at 13:22 CEST</small><p>Object attribute memory holds the objects to be displayed (also reffered as sprites) and their attributes. It creates OBJ - last of the three layers of graphics.</p>
 
 <div class="tip">
   <p><code>$9820 - $987F</code> (Write Only)</p>
 <p>💡
-OAM mirror is stored in RAM at <code>$8500</code> where it&rsquo;s being freely manipulated. OAM update is done during VBLANK - this prevents glitches and is commonly used method. During update objects are sorted, 32*32 ones are stored from the beginning of OAM and 16*16 from the end. Finally <code>$9A00</code> register is updated with value equal to sum of 32*32 objects + 3 (refer to routine at <code>$0958</code>).</p>
+OAM mirror is stored in RAM at <code>$8500</code> where it&rsquo;s being freely manipulated. OAM update is done during VBLANK - this prevents glitches and is commonly used method. During update objects from mirror are sorted, 32*32 ones are stored at the beginning of OAM and 16*16 from the end. At exit <code>$9A00</code> register is updated with value equal to sum of 32*32 objects + 3 (refer to routine at <code>$0958</code>).</p>
 
 </div>
 
-<p>The hardware allows 24 independent objects 16*16 or 32*32 pixels each with dedicated palette (0-15). OAM effectively creates 3rd layer of graphic which has the highest priority - OBJ is displayed over BG_1 which is displayed over BG_0. Each each of 24 entries in the map takes 4 bytes with the following meaning:</p>
+<p>Objects are stored in character format (16x16 and 32x32 pixels) but can be moved independently and displayed anywhere on the screen. It&rsquo;s possible to have graphics for 128 objects of 16*16 size and 32 objects of 32*32 size. Obviously there&rsquo;s a display limit. Hardware allows up to 24 objects on the screen if they&rsquo;re 16*16 pixels. For 32*32 objects this limit is halved (⚠️ just a guess, not verified yet). Apparently it is possible to mix objects of different sizes which Bomb Jack does in some simple way. Each object has its own palette applied and migh be flipped horizontally or vertically by hardware. OAM effectively creates 3rd layer of graphic - OBJ, which has the highest priority and is displayed over BG_1 which is displayed over BG_0.</p>
+<p>To display an object there must be valid entry in OAM. Each of 24 entries takes 4 bytes with the following meaning:</p>
 <table>
 <thead>
 <tr>
@@ -162,7 +164,7 @@ OAM mirror is stored in RAM at <code>$8500</code> where it&rsquo;s being freely 
 </tr>
 <tr>
 <td style="text-align:left">5</td>
-<td style="text-align:left">not used by hardware, game uses it to sort objects by size which hardly makes any sense</td>
+<td style="text-align:left">not used by hardware, game uses it to sort objects by size</td>
 </tr>
 <tr>
 <td style="text-align:left">6</td>
@@ -204,8 +206,8 @@ OAM mirror is stored in RAM at <code>$8500</code> where it&rsquo;s being freely 
   
     
     <div class="pager_item next">
-      <a href="https://gitendo.github.io/bombjack/dip_switch/" class="pager_link button" title="Dip Switch Settings" rel="next">
-        <span class="pager_label">Dip Switch Settings</span>
+      <a href="https://gitendo.github.io/bombjack/color_memory/" class="pager_link button" title="Color Palette Memory" rel="next">
+        <span class="pager_label">Color Palette Memory</span>
       </a>
     </div>
     

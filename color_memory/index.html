@@ -15,14 +15,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Poppins:wght@300;400;500;700&family=Source+Code+Pro:wght@300;400;700&display=swap" rel="stylesheet">
-<title>Welcome | Bomb Jack Docs</title><meta property="og:title" content="Welcome" />
-<meta property="og:description" content="Bomb Jack documentation, disassembly, reverse engineering project welcome page." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://gitendo.github.io/bombjack/" />
-<meta itemprop="name" content="Welcome">
-<meta itemprop="description" content="Bomb Jack documentation, disassembly, reverse engineering project welcome page."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Welcome"/>
-<meta name="twitter:description" content="Bomb Jack documentation, disassembly, reverse engineering project welcome page."/>
+<title>Color Palette Memory | Bomb Jack Docs</title><meta property="og:title" content="Color Palette Memory" />
+<meta property="og:description" content="Color palette memory overview." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gitendo.github.io/bombjack/color_memory/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2023-04-19T14:00:28+02:00" />
+<meta property="article:modified_time" content="2023-04-20T13:22:16+02:00" />
+<meta itemprop="name" content="Color Palette Memory">
+<meta itemprop="description" content="Color palette memory overview."><meta itemprop="datePublished" content="2023-04-19T14:00:28+02:00" />
+<meta itemprop="dateModified" content="2023-04-20T13:22:16+02:00" />
+<meta itemprop="wordCount" content="173">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Color Palette Memory"/>
+<meta name="twitter:description" content="Color palette memory overview."/>
 
 
 <link rel="stylesheet" href="https://gitendo.github.io/bombjack/css/styles.c69e6e19162bb7aa70c546bfd50f04e024aa8b69a046d02d210427d4d916a9662bc0036e827465221414a91dcc4e8887c4c13fb111629b3fb14e7ab791be85f8.css" integrity="sha512-xp5uGRYrt6pwxUa/1Q8E4CSqi2mgRtAtIQQn1NkWqWYrwANugnRlIhQUqR3MToiHxME/sRFimz&#43;xTnq3kb6F&#43;A==">
@@ -30,11 +35,11 @@
 
 
 
-  <meta name="description" content="Bomb Jack documentation, disassembly, reverse engineering project welcome page.">
+  <meta name="description" content="Color palette memory overview.">
 
 
 </head>
-<body class="page-home" id="pagetop">
+<body class="page-page" id="pagetop">
   <header class="nav_header">
 <nav class="wrap nav menu">
 	<a href='https://gitendo.github.io/bombjack/' class="nav_brand">
@@ -98,13 +103,13 @@
 </svg></label>
   </div>
   <section class="section aside_inner">
-    <h2 class="section_title active"><a  href="https://gitendo.github.io/bombjack/" class="group">Welcome</a></h2>
+    <h2 class="section_title"><a  href="https://gitendo.github.io/bombjack/" class="group">Welcome</a></h2>
       <section class="" id="docs-welcome">
         <h3 class="section_link"><a id="docs-memory-map" href="https://gitendo.github.io/bombjack/memory_map/">Memory Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-character-map" href="https://gitendo.github.io/bombjack/character_map/">Character Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-attribute-map" href="https://gitendo.github.io/bombjack/attribute_map/">Attribute Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-object-attribute-memory" href="https://gitendo.github.io/bombjack/object_memory/">Object Attribute Memory</a></h3><nav id="TableOfContents"></nav>
-        <h3 class="section_link"><a id="docs-color-palette-memory" href="https://gitendo.github.io/bombjack/color_memory/">Color Palette Memory</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link active"><a id="docs-color-palette-memory" href="https://gitendo.github.io/bombjack/color_memory/">Color Palette Memory</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip_switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
   <ul>
     <li><a href="#ds_1">DS_1</a></li>
@@ -117,36 +122,80 @@
 </aside>
 
   <main class="content">
-    <h1>Welcome</h1>
-      <small>Updated: April 18, 2023 at 13:44 CEST</small><section class="grid-2 text-justify"  >
+    <h1>Color Palette Memory</h1>
+      <small>Updated: April 20, 2023 at 13:22 CEST</small><p>Color palette memory holds user defined palettes. They can be applied to characters and objects used to create graphics layers.</p>
 
-<div><p>to my personal Bomb Jack documentation project based on software disassembly, reverse engineering and other available <a href="./sources/">sources</a>.</p>
-<p>You&rsquo;ve probably <a href="https://floooh.github.io/2018/10/06/bombjack.html">dissected Bomb Jack</a> along with Andre Weissflog. If not I really recommend reading it. Instead of emulating the game I&rsquo;ve been digging into the software side to figure out inner workings and hidden secrets of this instant classic.</p>
-<p>My final goal is to provide working assembly source, ready for possible improvements. This is ongoing exploration project and might not be completed.</p>
 <div class="tip">
-  <p>Current progress:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> disassembly (not public yet)</li>
-<li><input disabled="" type="checkbox"> reverse engineering (WIP)</li>
-<li><input disabled="" type="checkbox"> documentation (WIP)</li>
-</ul>
+  <p><code>$9C00 - $9CFF</code> (Write Only)</p>
+<p>💡 CRAM has its mirror located at <code>$8C00</code> where it&rsquo;s freely modified. Just like with <a href="../object_memory/">OAM</a>, update is recommended during VBLANK to prevent any glitches.</p>
+
 </div>
-<p><a href="./memory_map/" class="button">Explore</a></p>
+
+<section class="grid-2"  >
+
+<div><p>Color palette memory is organized into 16 slots.</p>
+<p>Each palette occupies one slot. It has 8 colors and each color entry takes 2 bytes, being represented by 12-bit BGR value. Unused bits are not set.</p>
 </div>
 
 
-<div><picture class="nav_logo" data-lit="https://gitendo.github.io/bombjack/images/bombjack-l.svg" data-dark="https://gitendo.github.io/bombjack/images/bombjack-d.svg">
-  <img src="https://gitendo.github.io/bombjack/images/bombjack-l.svg" alt="Bomb Jack">
-</picture>
+<div><table>
+<thead>
+<tr>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$9C00</td>
+<td style="text-align:left">palette $00</td>
+</tr>
+<tr>
+<td style="text-align:left">$9C10</td>
+<td style="text-align:left">palette $01</td>
+</tr>
+<tr>
+<td style="text-align:left">. . .</td>
+<td style="text-align:left">. . . . . .</td>
+</tr>
+<tr>
+<td style="text-align:left">$9CF0</td>
+<td style="text-align:left">palette $0F</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
 </section>
 
-
-    <div class="pager pager_lean">
+<p>Color 0 of each palette is displayed as transparent for BG_1 and OBJ - they effectively use one color less than BG_0.</p>
+<p>Palettes are independent from graphics data which means any object or character can be assigned any palette and have it modified any time.</p>
+<p>Couple examples:</p>
+<ul>
+<li>white (R:255, G:255, B:255) equals to <code>$0FFF</code></li>
+<li>orange (R:255, G:119, B:00) equals to <code>$007F</code>.</li>
+<li>blue (R:0, G:170, B:255) equals to <code>$0FA0</code>.</li>
+</ul>
+    <div class="pager">
+  
+    
+    <div class="pager_item prev">
+      <a href="https://gitendo.github.io/bombjack/object_memory/" class="pager_link button" title="Object Attribute Memory" rel="prev">
+        <span class="pager_label">Object Attribute Memory</span>
+      </a>
+    </div>
+    
   
 
+  
+    
+    <div class="pager_item next">
+      <a href="https://gitendo.github.io/bombjack/dip_switch/" class="pager_link button" title="Dip Switch Settings" rel="next">
+        <span class="pager_label">Dip Switch Settings</span>
+      </a>
+    </div>
+    
   
 </div>
   </main>
