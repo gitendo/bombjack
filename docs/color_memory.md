@@ -3,7 +3,7 @@ title: "Color Palette Memory"
 date: 2023-04-19T14:00:28+02:00
 description: "Color palette memory overview."
 draft: true
-weight: 11
+weight: 12
 ---
 
 Color palette memory holds user defined palettes. They can be applied to characters and objects used to create graphics layers.
