@@ -20,11 +20,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gitendo.github.io/bombjack/object_memory/" /><meta property="article:section" content="" />
 <meta property="article:published_time" content="2023-04-17T18:54:39+02:00" />
-<meta property="article:modified_time" content="2023-04-20T13:22:16+02:00" />
+<meta property="article:modified_time" content="2023-05-16T19:10:33+02:00" />
 <meta itemprop="name" content="Object Attribute Memory">
 <meta itemprop="description" content="Object attribute map overview."><meta itemprop="datePublished" content="2023-04-17T18:54:39+02:00" />
-<meta itemprop="dateModified" content="2023-04-20T13:22:16+02:00" />
-<meta itemprop="wordCount" content="322">
+<meta itemprop="dateModified" content="2023-05-16T19:10:33+02:00" />
+<meta itemprop="wordCount" content="476">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Object Attribute Memory"/>
 <meta name="twitter:description" content="Object attribute map overview."/>
@@ -109,6 +109,7 @@
         <h3 class="section_link"><a id="docs-character-map" href="https://gitendo.github.io/bombjack/character_map/">Character Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-attribute-map" href="https://gitendo.github.io/bombjack/attribute_map/">Attribute Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link active"><a id="docs-object-attribute-memory" href="https://gitendo.github.io/bombjack/object_memory/">Object Attribute Memory</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-object-size-select" href="https://gitendo.github.io/bombjack/object_select/">Object Size Select</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-color-palette-memory" href="https://gitendo.github.io/bombjack/color_memory/">Color Palette Memory</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip_switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
   <ul>
@@ -123,71 +124,171 @@
 
   <main class="content">
     <h1>Object Attribute Memory</h1>
-      <small>Updated: April 20, 2023 at 13:22 CEST</small><p>Object attribute memory holds the objects to be displayed (also reffered as sprites) and their attributes. It creates OBJ - last of the three layers of graphics.</p>
+      <small>Updated: May 16, 2023 at 19:10 CEST</small><p>Object attribute memory holds the information about objects (also reffered as sprites) to be displayed. It creates last of the three layers of graphics.</p>
 
 <div class="tip">
   <p><code>$9820 - $987F</code> (Write Only)</p>
 <p>💡
-OAM mirror is stored in RAM at <code>$8500</code> where it&rsquo;s being freely manipulated. OAM update is done during VBLANK - this prevents glitches and is commonly used method. During update objects from mirror are sorted, 32*32 ones are stored at the beginning of OAM and 16*16 from the end. At exit <code>$9A00</code> register is updated with value equal to sum of 32*32 objects + 3 (refer to routine at <code>$0958</code>).</p>
+OAM mirror is stored in RAM at <code>$8500</code> where it&rsquo;s being freely manipulated. OAM update is done during VBLANK - this prevents glitches and is commonly used method.</p>
 
 </div>
 
-<p>Objects are stored in character format (16x16 and 32x32 pixels) but can be moved independently and displayed anywhere on the screen. It&rsquo;s possible to have graphics for 128 objects of 16*16 size and 32 objects of 32*32 size. Obviously there&rsquo;s a display limit. Hardware allows up to 24 objects on the screen if they&rsquo;re 16*16 pixels. For 32*32 objects this limit is halved (⚠️ just a guess, not verified yet). Apparently it is possible to mix objects of different sizes which Bomb Jack does in some simple way. Each object has its own palette applied and migh be flipped horizontally or vertically by hardware. OAM effectively creates 3rd layer of graphic - OBJ, which has the highest priority and is displayed over BG_1 which is displayed over BG_0.</p>
-<p>To display an object there must be valid entry in OAM. Each of 24 entries takes 4 bytes with the following meaning:</p>
+<p>Objects are stored in character format but can be moved independently and displayed anywhere on the screen.
+They have the highest priority and are displayed over BG_1 which is displayed over BG_0.
+Hardware supports two object sizes: 16*16 and 32*32 pixels.
+Each object has its own palette applied and might be flipped horizontally or vertically.
+Obviously, there&rsquo;s display and storage limit:</p>
+<ul>
+<li>
+<p>as for display, it&rsquo;s <a href="https://github.com/martinpiper/BombJack/issues/6#issuecomment-1521667462">384</a> pixels per scan line which translates to 24 objects (16*16 pixels) or 12 objects (32*32 pixels).
+It&rsquo;s possible to have objects of mixed sizes but the limit still applies (consider one 32*32 as two 16*16 objects to make things easier).
+Multiplexing also works (this has been already <a href="https://youtu.be/vDuSqMVrGko?t=187">proven</a> by Martin Piper) although there&rsquo;s no register that provides information about current scan line being processed.</p>
+</li>
+<li>
+<p>there&rsquo;re 1024 characters to be used for storage of object graphics. One 16*16 object uses four of them and 32*32 uses sixteen. This gives room to 256 objects of 16*16
+size or 64 objects of 32*32 size. Different sizes could be stored interchangeably but this requires some planning. Object character data is seen by the hardware as 2 banks
+which affects directly how they&rsquo;re bing selected.</p>
+</li>
+</ul>
+<section class="grid-2 mt-1"  >
+
+<div class="text-justify"><p>To create an object there must be valid entry in OAM - please refer to the table on the right. The order is related to display priority: low to high.</p>
+<p>As you can tell, 16*16 object entries must be aligned to 4 byte boundary while 32*32 objects to 8 byte boundary.
+In the latter case each OAM entry should be followed by four zero bytes.</p>
+<p>Since OAM entry doesn&rsquo;t contain any information about object size another thing specific to 32*32 objects is usage of <a href="../object_select/">size select registers</a>.
+This is explained in details in it&rsquo;s own chapter.</p>
+</div>
+
+
+<div><table>
+<thead>
+<tr>
+<th style="text-align:left">OAM Address</th>
+<th style="text-align:left">16*16 OBJ</th>
+<th style="text-align:left">32*32 OBJ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$9820</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">$9824</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">$9828</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">$982C</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">$9830</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">$9834</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">$9878</td>
+<td style="text-align:left">23</td>
+<td style="text-align:left">12</td>
+</tr>
+<tr>
+<td style="text-align:left">$987C</td>
+<td style="text-align:left">24</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</section>
+
+<p>Finally here&rsquo;s the entry itself. It consists of 4 bytes with their bits having the following meaning:</p>
 <table>
 <thead>
 <tr>
+<th style="text-align:left">Byte</th>
 <th style="text-align:left">Bits</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">0 - 6</td>
-<td style="text-align:left">object id (0-127 in case of 16*16 and 0-31 for 32*32 objects)</td>
-</tr>
-<tr>
+<td style="text-align:left">1</td>
 <td style="text-align:left">7</td>
-<td style="text-align:left">toggles between 16*16 (0) and 32*32 (1) objects</td>
+<td style="text-align:left">toggles between lower (0) and upper (1) bank where object graphics is stored</td>
 </tr>
 <tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">6 - 0</td>
+<td style="text-align:left">object id (0-127) in case of 16*16 and (0-31) for 32*32 objects</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
 <td style="text-align:left"></td>
 <td style="text-align:left"> </td>
 </tr>
 <tr>
-<td style="text-align:left">0 - 3</td>
-<td style="text-align:left">object palette id (0-15)</td>
-</tr>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left">seems unused</td>
-</tr>
-<tr>
-<td style="text-align:left">5</td>
-<td style="text-align:left">not used by hardware, game uses it to sort objects by size</td>
-</tr>
-<tr>
-<td style="text-align:left">6</td>
-<td style="text-align:left">flips object vertically</td>
-</tr>
-<tr>
+<td style="text-align:left">2</td>
 <td style="text-align:left">7</td>
 <td style="text-align:left">flips object horizontally</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"> </td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">flips object vertically</td>
 </tr>
 <tr>
-<td style="text-align:left">0 - 7</td>
-<td style="text-align:left">object x coordinate</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">not used by hardware (used by software to tag 32*32 objects)</td>
 </tr>
 <tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">not used by hardware</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">3 - 0</td>
+<td style="text-align:left">object palette id (0-15)</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
 <td style="text-align:left"></td>
 <td style="text-align:left"> </td>
 </tr>
 <tr>
-<td style="text-align:left">0 - 7</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">7 - 0</td>
+<td style="text-align:left">object x coordinate</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"> </td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">7 - 0</td>
 <td style="text-align:left">object y coordinate</td>
 </tr>
 </tbody>
@@ -206,8 +307,8 @@ OAM mirror is stored in RAM at <code>$8500</code> where it&rsquo;s being freely 
   
     
     <div class="pager_item next">
-      <a href="https://gitendo.github.io/bombjack/color_memory/" class="pager_link button" title="Color Palette Memory" rel="next">
-        <span class="pager_label">Color Palette Memory</span>
+      <a href="https://gitendo.github.io/bombjack/object_select/" class="pager_link button" title="Object Size Select" rel="next">
+        <span class="pager_label">Object Size Select</span>
       </a>
     </div>
     

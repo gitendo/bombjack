@@ -39,7 +39,17 @@
       <pubDate>Mon, 17 Apr 2023 18:54:39 +0200</pubDate>
       
       <guid>https://gitendo.github.io/bombjack/object_memory/</guid>
-      <description>&lt;p&gt;Object attribute memory holds the objects to be displayed (also reffered as sprites) and their attributes. It creates OBJ - last of the three layers of graphics.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Object attribute memory holds the information about objects (also reffered as sprites) to be displayed. It creates last of the three layers of graphics.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Object Size Select</title>
+      <link>https://gitendo.github.io/bombjack/object_select/</link>
+      <pubDate>Thu, 20 Apr 2023 18:17:35 +0200</pubDate>
+      
+      <guid>https://gitendo.github.io/bombjack/object_select/</guid>
+      <description>&lt;p&gt;Size select registers define how many and which entries in &lt;a href=&#34;../object_memory/&#34;&gt;OAM&lt;/a&gt; are displayed as 32*32 objects.&lt;/p&gt;
+&lt;p&gt;⚠️  The following information is partly based on the research done by &lt;a href=&#34;https://github.com/martinpiper/BombJack/&#34;&gt;Martin Piper&lt;/a&gt; and it&amp;rsquo;s not properly emulated by MAME as of the time of writing.&lt;/p&gt;</description>
     </item>
     
     <item>
