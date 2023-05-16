@@ -23,7 +23,7 @@ The following table shows a short overview of Bomb Jack memory map as seen and u
 | $9000   | $03FF | VRAM | RW     | [character map](../character_map/) |
 | $9400   | $03FF | VRAM | RW     | [attribute map](../attribute_map/) |
 | $9820   | $005F | VRAM | WO     | [object attribute memory](../object_memory/) |
-| $9A00   | -     | I/O  | WO     | [32\*32 object counter](../object_cnt/) |
+| $9A00 / $9A01   | -     | I/O  | WO     | [object size select](../object_select/) |
 | $9C00   | $00FF | CRAM | WO     | [color palette memory](../color_memory/) |
 | $9E00   | -     | I/O  | WO     | background picture select |
 | $B000   | -     | I/O  | RW     | joystick 1 and NMI mask |
