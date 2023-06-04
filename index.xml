@@ -2,80 +2,89 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Welcome on Bomb Jack Docs</title>
-    <link>https://gitendo.github.io/bombjack/</link>
+    <link>https://gitendo.github.io/</link>
     <description>Recent content in Welcome on Bomb Jack Docs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 19 Mar 2023 21:06:08 +0100</lastBuildDate><atom:link href="https://gitendo.github.io/bombjack/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Mar 2023 21:06:08 +0100</lastBuildDate><atom:link href="https://gitendo.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Memory Map</title>
-      <link>https://gitendo.github.io/bombjack/memory_map/</link>
+      <link>https://gitendo.github.io/memory_map/</link>
       <pubDate>Tue, 14 Mar 2023 11:46:26 +0100</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/memory_map/</guid>
+      <guid>https://gitendo.github.io/memory_map/</guid>
       <description>&lt;p&gt;The following table shows a short overview of Bomb Jack memory map as seen and used by Z80.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Character Map</title>
-      <link>https://gitendo.github.io/bombjack/character_map/</link>
+      <link>https://gitendo.github.io/character_map/</link>
       <pubDate>Mon, 17 Apr 2023 09:50:57 +0200</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/character_map/</guid>
+      <guid>https://gitendo.github.io/character_map/</guid>
       <description>&lt;p&gt;Character map combined with &lt;a href=&#34;../attribute_map/&#34;&gt;attribute map&lt;/a&gt; creates BG_1 - second of the three layers of graphics.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Attribute Map</title>
-      <link>https://gitendo.github.io/bombjack/attribute_map/</link>
+      <link>https://gitendo.github.io/attribute_map/</link>
       <pubDate>Mon, 17 Apr 2023 12:10:43 +0200</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/attribute_map/</guid>
+      <guid>https://gitendo.github.io/attribute_map/</guid>
       <description>&lt;p&gt;Attribute map is strictly related to &lt;a href=&#34;../character_map/&#34;&gt;character map&lt;/a&gt;, both are used to create BG_1 layer.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Object Attribute Memory</title>
-      <link>https://gitendo.github.io/bombjack/object_memory/</link>
+      <link>https://gitendo.github.io/object_memory/</link>
       <pubDate>Mon, 17 Apr 2023 18:54:39 +0200</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/object_memory/</guid>
+      <guid>https://gitendo.github.io/object_memory/</guid>
       <description>&lt;p&gt;Object attribute memory holds the information about objects (also reffered as sprites) to be displayed. It creates last of the three layers of graphics.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Object Size Select</title>
-      <link>https://gitendo.github.io/bombjack/object_select/</link>
+      <link>https://gitendo.github.io/object_select/</link>
       <pubDate>Thu, 20 Apr 2023 18:17:35 +0200</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/object_select/</guid>
+      <guid>https://gitendo.github.io/object_select/</guid>
       <description>&lt;p&gt;Size select registers define how many and which entries in &lt;a href=&#34;../object_memory/&#34;&gt;OAM&lt;/a&gt; are displayed as 32*32 objects.&lt;/p&gt;
 &lt;p&gt;⚠️  The following information is partly based on the research done by &lt;a href=&#34;https://github.com/martinpiper/BombJack/&#34;&gt;Martin Piper&lt;/a&gt; and it&amp;rsquo;s not properly emulated by MAME as of the time of writing.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Color Palette Memory</title>
-      <link>https://gitendo.github.io/bombjack/color_memory/</link>
+      <link>https://gitendo.github.io/color_memory/</link>
       <pubDate>Wed, 19 Apr 2023 14:00:28 +0200</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/color_memory/</guid>
+      <guid>https://gitendo.github.io/color_memory/</guid>
       <description>&lt;p&gt;Color palette memory holds user defined palettes. They can be applied to characters and objects used to create graphics layers.&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>Background Picture Select</title>
+      <link>https://gitendo.github.io/background_select/</link>
+      <pubDate>Sat, 20 May 2023 14:54:02 +0200</pubDate>
+      
+      <guid>https://gitendo.github.io/background_select/</guid>
+      <description>&lt;p&gt;Background picture select register simplifies setting of character and attribute maps for BG_0.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Dip Switch Settings</title>
-      <link>https://gitendo.github.io/bombjack/dip_switch/</link>
+      <link>https://gitendo.github.io/dip_switch/</link>
       <pubDate>Thu, 16 Mar 2023 21:09:42 +0100</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/dip_switch/</guid>
+      <guid>https://gitendo.github.io/dip_switch/</guid>
       <description>&lt;p&gt;Bomb Jack PCB has two dip switches to configure game settings. How the game accesses and makes use of them is explained right here.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Sources</title>
-      <link>https://gitendo.github.io/bombjack/sources/</link>
+      <link>https://gitendo.github.io/sources/</link>
       <pubDate>Sun, 26 Mar 2023 12:34:39 +0200</pubDate>
       
-      <guid>https://gitendo.github.io/bombjack/sources/</guid>
+      <guid>https://gitendo.github.io/sources/</guid>
       <description>&lt;p&gt;Here are external sources I&amp;rsquo;ve found useful and I&amp;rsquo;ve used in this project:&lt;/p&gt;</description>
     </item>
     

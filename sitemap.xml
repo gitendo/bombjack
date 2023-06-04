@@ -2,35 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gitendo.github.io/bombjack/</loc>
+    <loc>https://gitendo.github.io/</loc>
     <lastmod>2023-04-18T13:44:48+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/memory_map/</loc>
-    <lastmod>2023-05-16T19:10:33+02:00</lastmod>
+    <loc>https://gitendo.github.io/memory_map/</loc>
+    <lastmod>2023-06-04T21:42:34+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/character_map/</loc>
+    <loc>https://gitendo.github.io/character_map/</loc>
     <lastmod>2023-04-18T13:44:48+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/attribute_map/</loc>
+    <loc>https://gitendo.github.io/attribute_map/</loc>
     <lastmod>2023-04-18T13:44:48+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/object_memory/</loc>
+    <loc>https://gitendo.github.io/object_memory/</loc>
     <lastmod>2023-05-16T19:10:33+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/object_select/</loc>
+    <loc>https://gitendo.github.io/object_select/</loc>
     <lastmod>2023-05-16T19:10:33+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/color_memory/</loc>
+    <loc>https://gitendo.github.io/color_memory/</loc>
     <lastmod>2023-04-20T19:42:49+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/dip_switch/</loc>
+    <loc>https://gitendo.github.io/background_select/</loc>
+    <lastmod>2023-06-04T21:42:34+02:00</lastmod>
+  </url><url>
+    <loc>https://gitendo.github.io/dip_switch/</loc>
     <lastmod>2023-04-18T13:44:48+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/sources/</loc>
+    <loc>https://gitendo.github.io/sources/</loc>
     <lastmod>2023-04-18T13:44:48+02:00</lastmod>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/categories/</loc>
+    <loc>https://gitendo.github.io/categories/</loc>
   </url><url>
-    <loc>https://gitendo.github.io/bombjack/tags/</loc>
+    <loc>https://gitendo.github.io/tags/</loc>
   </url>
 </urlset>

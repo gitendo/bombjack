@@ -15,14 +15,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Poppins:wght@300;400;500;700&family=Source+Code+Pro:wght@300;400;700&display=swap" rel="stylesheet">
-<title>Tags | Bomb Jack Docs</title><meta property="og:title" content="Tags" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://gitendo.github.io/tags/" />
-<meta itemprop="name" content="Tags">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content=""/>
+<title>Background Picture Select | Bomb Jack Docs</title><meta property="og:title" content="Background Picture Select" />
+<meta property="og:description" content="BG_0 character, attribute map and selection overview." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gitendo.github.io/background_select/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2023-05-20T14:54:02+02:00" />
+<meta property="article:modified_time" content="2023-06-04T21:42:34+02:00" />
+<meta itemprop="name" content="Background Picture Select">
+<meta itemprop="description" content="BG_0 character, attribute map and selection overview."><meta itemprop="datePublished" content="2023-05-20T14:54:02+02:00" />
+<meta itemprop="dateModified" content="2023-06-04T21:42:34+02:00" />
+<meta itemprop="wordCount" content="459">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Background Picture Select"/>
+<meta name="twitter:description" content="BG_0 character, attribute map and selection overview."/>
 
 
 <link rel="stylesheet" href="https://gitendo.github.io/css/styles.abfdc4ee2fe6610bf229dbbf6eff651b7db4bf96f90b4211e4a7da3a517c70992daf0fbb285b319ab4ad1ad472b2c967b2b5dccab295f0d7b19e81cc51abc3e6.css" integrity="sha512-q/3E7i/mYQvyKdu/bv9lG320v5b5C0IR5KfaOlF8cJktrw&#43;7KFsxmrStGtRysslnsrXcyrKV8NexnoHMUavD5g==">
@@ -30,9 +35,11 @@
 
 
 
+  <meta name="description" content="BG_0 character, attribute map and selection overview.">
+
 
 </head>
-<body class="page-taxonomy" id="pagetop">
+<body class="page-page" id="pagetop">
   <header class="nav_header">
 <nav class="wrap nav menu">
 	<a href='https://gitendo.github.io/' class="nav_brand">
@@ -55,8 +62,9 @@
   </label>
   
   
+    
   
-  <input type="search" class="search_field  standardize-input" placeholder="Search tags" id="find" autocomplete="off"  data-scope='tags'>
+  <input type="search" class="search_field  standardize-input" placeholder="Search site" id="find" autocomplete="off"  data-scope=''>
   <div class="search_results results"></div>
 </div>
 
@@ -88,14 +96,161 @@
     
     
       
-    
-      <div class="content">
+    <div class="grid-auto"><aside class="aside menu">
+  <div>
+    <label class="aside_toggle toggle" title='Docs Menu' role="button">Docs Menu <svg class="icon icon_carly">
+  <use xlink:href="#carly"></use>
+</svg></label>
+  </div>
+  <section class="section aside_inner">
+    <h2 class="section_title"><a  href="https://gitendo.github.io/" class="group">Welcome</a></h2>
+      <section class="" id="docs-welcome">
+        <h3 class="section_link"><a id="docs-memory-map" href="https://gitendo.github.io/memory_map/">Memory Map</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-character-map" href="https://gitendo.github.io/character_map/">Character Map</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-attribute-map" href="https://gitendo.github.io/attribute_map/">Attribute Map</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-object-attribute-memory" href="https://gitendo.github.io/object_memory/">Object Attribute Memory</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-object-size-select" href="https://gitendo.github.io/object_select/">Object Size Select</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-color-palette-memory" href="https://gitendo.github.io/color_memory/">Color Palette Memory</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link active"><a id="docs-background-picture-select" href="https://gitendo.github.io/background_select/">Background Picture Select</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/dip_switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#ds_1">DS_1</a></li>
+    <li><a href="#ds_2">DS_2</a></li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-sources" href="https://gitendo.github.io/sources/">Sources</a></h3><nav id="TableOfContents"></nav>
+      </section>
+  </section>
+</aside>
+
+  <main class="content">
+    <h1>Background Picture Select</h1>
+      <small>Updated: June 04, 2023 at 21:42 CEST</small><p>Background picture select register simplifies setting of character and attribute maps for BG_0.</p>
+
+<div class="tip">
+  <p><code>$9E00</code> (Write Only)</p>
+<p>💡 Value to be written should have 4th bit set to change the background. It&rsquo;s currently unknown if 3rd bit is also used by the hardware.</p>
+
+</div>
+
+<p>BG_0 and BG_1 share the common concept of <a href="../character_map/">character</a> and <a href="../attribute_map/">attribute maps</a>. They&rsquo;re both handled in a different way though.
+BG_0 holds up to 256 characters, 16*16 pixels each. Character data is divided into 3 bitplanes and stored in the following files:<br>
+<code>06_l08t.bin</code><br>
+<code>07_n08t.bin</code><br>
+<code>08_r08t.bin</code></p>
+<p>Game utilizes 8 backgrounds and the same amount of <a href="../character_map/">character maps</a> is stored in <code>02_p04t.bin</code> file. Each <a href="../character_map/">character map</a> is followed by related <a href="../attribute_map/">attribute map</a>, they&rsquo;re
+256 bytes each. The order of background maps is as follows:</p>
+<section class="grid-2"  >
+
+<div><table>
+<thead>
+<tr>
+<th style="text-align:right">ID</th>
+<th style="text-align:right">Offset</th>
+<th style="text-align:right">Background</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">$00</td>
+<td style="text-align:right">$0000</td>
+<td style="text-align:right">Rome</td>
+</tr>
+<tr>
+<td style="text-align:right">$01</td>
+<td style="text-align:right">$0200</td>
+<td style="text-align:right">California</td>
+</tr>
+<tr>
+<td style="text-align:right">$02</td>
+<td style="text-align:right">$0400</td>
+<td style="text-align:right">Egypt</td>
+</tr>
+<tr>
+<td style="text-align:right">$03</td>
+<td style="text-align:right">$0600</td>
+<td style="text-align:right">Germany</td>
+</tr>
+<tr>
+<td style="text-align:right">$04</td>
+<td style="text-align:right">$0800</td>
+<td style="text-align:right">New York</td>
+</tr>
+<tr>
+<td style="text-align:right">$0D</td>
+<td style="text-align:right">$0A00</td>
+<td style="text-align:right">Empty</td>
+</tr>
+<tr>
+<td style="text-align:right">$0E</td>
+<td style="text-align:right">$0C00</td>
+<td style="text-align:right">Bonus (gold)</td>
+</tr>
+<tr>
+<td style="text-align:right">$0F</td>
+<td style="text-align:right">$0E00</td>
+<td style="text-align:right">Bonus (silver)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="text-justify">The IDs are used in game data structures and code. Shift of the last three (<code>$0D-$08=$05</code>) is made to distinguish these maps by the procedure at <code>$6326</code>. They require just one palette
+slot while others need two, differently located. This seems to be code not hardware dependent but needs futher analysis.</div>
+
+
+</section>
+
+<p>All attribute maps use just two color palette slots: <code>$08</code> and <code>$0A</code> which restricts background pictures to 16 colors. Only horizontal fliping is possible - attribute&rsquo;s 7th bit is used
+for such purpose. The process of setting chosen background is as simple as writing palette data to correct palette slot(s) and then use one of eight possible IDs. Before writing
+to register 4th bit of the ID must be set. Everything else is taken care of by hardware itself. Please refer to original code, located at <code>$639A</code>:</p>
+<pre tabindex="0"><code>set_bg_picture:
+&amp;nbsp;	ld      a, ($8985)  	; check flag (update bg picture and palette)
+&amp;nbsp;	or      a
+&amp;nbsp;	ret     z               ; quit
+&amp;nbsp;	ld      a, ($8986)	; get background picture id
+&amp;nbsp;	cp      $10		; leftover code?
+&amp;nbsp;	jp      z, _skip    	; 
+&amp;nbsp;	push    af		; keep id
+&amp;nbsp;	ld      hl, $8C70       ; RAM: palette data src
+&amp;nbsp;	ld      de, $9C70       ; CRAM: palette data dst
+&amp;nbsp;	ld      bc, $40         ; 4 palettes (bonus box, bg picture bottom half, platforms and border, bg picture top half)
+&amp;nbsp;	ldir                    ; copy from (hl) to (de)
+&amp;nbsp;	pop     af		; restore id
+
+_skip:
+&amp;nbsp;	set     4, a            ; 
+&amp;nbsp;	ld      ($9E00), a  	; background select register (write only)
+&amp;nbsp;	ld      a, 0            ; update finished
+&amp;nbsp;	ld      ($8985), a	; reset flag
+&amp;nbsp;	ret
+</code></pre><p>While definately convenient, this unfortunately comes at a price of static and limited backgrounds - it&rsquo;s not possible to modify BG_0 just like BG_1. There&rsquo;s no vertical flipping
+which could help to conserve character data memory.</p>
+    <div class="pager">
   
-  <ol>
     
-  </ol>
+    <div class="pager_item prev">
+      <a href="https://gitendo.github.io/color_memory/" class="pager_link button" title="Color Palette Memory" rel="prev">
+        <span class="pager_label">Color Palette Memory</span>
+      </a>
+    </div>
+    
   
-      </div></div>
+
+  
+    
+    <div class="pager_item next">
+      <a href="https://gitendo.github.io/dip_switch/" class="pager_link button" title="Dip Switch Settings" rel="next">
+        <span class="pager_label">Dip Switch Settings</span>
+      </a>
+    </div>
+    
+  
+</div>
+  </main>
+</div>
+</div>
   
 <footer class="pt-2 pb-2">
   <div class="wrap">
