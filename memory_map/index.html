@@ -20,10 +20,10 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gitendo.github.io/bombjack/memory_map/" /><meta property="article:section" content="" />
 <meta property="article:published_time" content="2023-03-14T11:46:26+01:00" />
-<meta property="article:modified_time" content="2023-06-04T21:42:34+02:00" />
+<meta property="article:modified_time" content="2023-06-09T19:29:46+02:00" />
 <meta itemprop="name" content="Memory Map">
 <meta itemprop="description" content="Bomb Jack memory map overview."><meta itemprop="datePublished" content="2023-03-14T11:46:26+01:00" />
-<meta itemprop="dateModified" content="2023-06-04T21:42:34+02:00" />
+<meta itemprop="dateModified" content="2023-06-09T19:29:46+02:00" />
 <meta itemprop="wordCount" content="149">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Memory Map"/>
@@ -111,6 +111,7 @@
         <h3 class="section_link"><a id="docs-object-attribute-memory" href="https://gitendo.github.io/bombjack/object_memory/">Object Attribute Memory</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-object-size-select" href="https://gitendo.github.io/bombjack/object_select/">Object Size Select</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-color-palette-memory" href="https://gitendo.github.io/bombjack/color_memory/">Color Palette Memory</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-controller-inputs-and-nmi" href="https://gitendo.github.io/bombjack/controller/">Controller Inputs and NMI</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-background-picture-select" href="https://gitendo.github.io/bombjack/background_select/">Background Picture Select</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip_switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
   <ul>
@@ -125,7 +126,7 @@
 
   <main class="content">
     <h1>Memory Map</h1>
-      <small>Updated: June 04, 2023 at 21:42 CEST</small><p>The following table shows a short overview of Bomb Jack memory map as seen and used by Z80.</p>
+      <small>Updated: June 09, 2023 at 19:29 CEST</small><p>The following table shows a short overview of Bomb Jack memory map as seen and used by Z80.</p>
 <section class="spacer"  >
 </section>
 
@@ -222,21 +223,21 @@
 <td style="text-align:left">-</td>
 <td style="text-align:left">I/O</td>
 <td style="text-align:center">RW</td>
-<td style="text-align:left">joystick 1 and NMI mask</td>
+<td style="text-align:left"><a href="../controller/">joystick 1 and NMI</a></td>
 </tr>
 <tr>
 <td style="text-align:left">$B001</td>
 <td style="text-align:left">-</td>
 <td style="text-align:left">I/O</td>
 <td style="text-align:center">RO</td>
-<td style="text-align:left">joystick 2</td>
+<td style="text-align:left"><a href="../controller/">joystick 2</a></td>
 </tr>
 <tr>
 <td style="text-align:left">$B002</td>
 <td style="text-align:left">-</td>
 <td style="text-align:left">I/O</td>
 <td style="text-align:center">RO</td>
-<td style="text-align:left">coins and start button</td>
+<td style="text-align:left"><a href="../controller/">coins acceptors nd start buttons</a></td>
 </tr>
 <tr>
 <td style="text-align:left">$B003</td>

@@ -15,19 +15,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Poppins:wght@300;400;500;700&family=Source+Code+Pro:wght@300;400;700&display=swap" rel="stylesheet">
-<title>Object Size Select | Bomb Jack Docs</title><meta property="og:title" content="Object Size Select" />
-<meta property="og:description" content="Object size select overview." />
+<title>Controller Inputs and NMI | Bomb Jack Docs</title><meta property="og:title" content="Controller Inputs and NMI" />
+<meta property="og:description" content="Joystick, buttons, coin acceptor state and NMI." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://gitendo.github.io/bombjack/object_select/" /><meta property="article:section" content="" />
-<meta property="article:published_time" content="2023-04-20T18:17:35+02:00" />
-<meta property="article:modified_time" content="2023-05-16T19:10:33+02:00" />
-<meta itemprop="name" content="Object Size Select">
-<meta itemprop="description" content="Object size select overview."><meta itemprop="datePublished" content="2023-04-20T18:17:35+02:00" />
-<meta itemprop="dateModified" content="2023-05-16T19:10:33+02:00" />
-<meta itemprop="wordCount" content="936">
+<meta property="og:url" content="https://gitendo.github.io/bombjack/controller/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2023-06-06T13:56:23+02:00" />
+<meta property="article:modified_time" content="2023-06-09T19:29:46+02:00" />
+<meta itemprop="name" content="Controller Inputs and NMI">
+<meta itemprop="description" content="Joystick, buttons, coin acceptor state and NMI."><meta itemprop="datePublished" content="2023-06-06T13:56:23+02:00" />
+<meta itemprop="dateModified" content="2023-06-09T19:29:46+02:00" />
+<meta itemprop="wordCount" content="155">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Object Size Select"/>
-<meta name="twitter:description" content="Object size select overview."/>
+<meta name="twitter:title" content="Controller Inputs and NMI"/>
+<meta name="twitter:description" content="Joystick, buttons, coin acceptor state and NMI."/>
 
 
 <link rel="stylesheet" href="https://gitendo.github.io/bombjack/css/styles.c69e6e19162bb7aa70c546bfd50f04e024aa8b69a046d02d210427d4d916a9662bc0036e827465221414a91dcc4e8887c4c13fb111629b3fb14e7ab791be85f8.css" integrity="sha512-xp5uGRYrt6pwxUa/1Q8E4CSqi2mgRtAtIQQn1NkWqWYrwANugnRlIhQUqR3MToiHxME/sRFimz&#43;xTnq3kb6F&#43;A==">
@@ -35,7 +35,7 @@
 
 
 
-  <meta name="description" content="Object size select overview.">
+  <meta name="description" content="Joystick, buttons, coin acceptor state and NMI.">
 
 
 </head>
@@ -109,9 +109,9 @@
         <h3 class="section_link"><a id="docs-character-map" href="https://gitendo.github.io/bombjack/character_map/">Character Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-attribute-map" href="https://gitendo.github.io/bombjack/attribute_map/">Attribute Map</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-object-attribute-memory" href="https://gitendo.github.io/bombjack/object_memory/">Object Attribute Memory</a></h3><nav id="TableOfContents"></nav>
-        <h3 class="section_link active"><a id="docs-object-size-select" href="https://gitendo.github.io/bombjack/object_select/">Object Size Select</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link"><a id="docs-object-size-select" href="https://gitendo.github.io/bombjack/object_select/">Object Size Select</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-color-palette-memory" href="https://gitendo.github.io/bombjack/color_memory/">Color Palette Memory</a></h3><nav id="TableOfContents"></nav>
-        <h3 class="section_link"><a id="docs-controller-inputs-and-nmi" href="https://gitendo.github.io/bombjack/controller/">Controller Inputs and NMI</a></h3><nav id="TableOfContents"></nav>
+        <h3 class="section_link active"><a id="docs-controller-inputs-and-nmi" href="https://gitendo.github.io/bombjack/controller/">Controller Inputs and NMI</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-background-picture-select" href="https://gitendo.github.io/bombjack/background_select/">Background Picture Select</a></h3><nav id="TableOfContents"></nav>
         <h3 class="section_link"><a id="docs-dip-switch-settings" href="https://gitendo.github.io/bombjack/dip_switch/">Dip Switch Settings</a></h3><nav id="TableOfContents">
   <ul>
@@ -125,485 +125,115 @@
 </aside>
 
   <main class="content">
-    <h1>Object Size Select</h1>
-      <small>Updated: May 16, 2023 at 19:10 CEST</small><p>Size select registers define how many and which entries in <a href="../object_memory/">OAM</a> are displayed as 32*32 objects.</p>
-<p>⚠️  The following information is partly based on the research done by <a href="https://github.com/martinpiper/BombJack/">Martin Piper</a> and it&rsquo;s not properly emulated by MAME as of the time of writing.</p>
+    <h1>Controller Inputs and NMI</h1>
+      <small>Updated: June 09, 2023 at 19:29 CEST</small><p>Use the following ports to read coin acceptor, joystick and button state.</p>
 
 <div class="tip">
-  <p><code>$9A00</code> (Write Only)<br>
-<code>$9A01</code> (Write Only)</p>
-<p>💡 Both registers accept values from 0 to 15 however values from 0 to 3 do not provide any result.<br>
-During initial setup memory from <code>$9A00</code> to <code>$9AC8</code> is zero filled by code at <code>$015F</code>. It&rsquo;s currently unknown why such large block is used.</p>
-
+  <code>$B000</code> (Read) - Joystick 1<br>
+<code>$B001</code> (Read) - Joystick 2<br>
+<code>$B002</code> (Read) - Other
 </div>
 
-<p>Even though single <a href="../object_memory/">OAM</a> entry contains a lot of information it doesn&rsquo;t specify the object size.
-All entries are assumed to be 16*16 objects by default and no additional action is required.
-To display one or more of 32*32 objects the forementioned registers are used. Four combinations are possible:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Mode</th>
-<th style="text-align:left">Requirements</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">16*16 objects only</td>
-<td style="text-align:left">Set both registers to <code>$00</code> value. This causes every <a href="../object_memory/">OAM</a> entry out of 24 available to be displayed as 16*16.</td>
-</tr>
-<tr>
-<td style="text-align:left">32*32 objects only</td>
-<td style="text-align:left">Set <code>$9A00</code> to <code>$0F</code> and <code>$9A01</code> to <code>$00</code>. Every <a href="../object_memory/">OAM</a> entry out of 12 possible is displayed as 32*32.</td>
-</tr>
-<tr>
-<td style="text-align:left">16*16 and 32*32 objects (ordered)</td>
-<td style="text-align:left">Set <code>$9A00</code> register with number of 32*32 objects increased by 3. Write all 32*32 entries before 16*16 ones during <a href="../object_memory/">OAM</a> update. If the number of 32*32 objects changes dynamically also update <code>$9A00</code> register. This is roughly what game code does at <code>$0958</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">16*16 and 32*32 objects (mixed)</td>
-<td style="text-align:left">Use <code>$9A00</code> as <em>start</em> and <code>$9A01</code> as <em>end</em> parameter. <em>start</em> points to the first <a href="../object_memory/">OAM</a> entry to be displayed as 32*32 object while <em>end</em> points to entry following the last one to be displayed as such. Both parameters must be in 1-12 range and then increased by 3 before writing.</td>
-</tr>
-</tbody>
-</table>
-<p>While first two modes are straightforward let&rsquo;s review the original code located at <code>$0958</code>:</p>
-<pre tabindex="0"><code>oam_update:
-&amp;nbsp;	ld      ix, $9878	; VRAM: OAM last entry (dst for 16*16 obj)
-&amp;nbsp;	ld      iy, $9820	; VRAM: OAM first entry (dst for 32*32 obj)
-&amp;nbsp;	ld      hl, $8500	; RAM: OAM mirror (src)
-&amp;nbsp;	ld      b, $0C          ; 12 objects * 8 (4 byte entry followed by 4 zeroes ) = OAM size
-&amp;nbsp;	ld      c, 3		; 32*32 obj counter (starts from 3 because values 0-3 have no effect on $9A00)
-
-_next:
-&amp;nbsp;	ld      a, b		; all 12 objects processed?
-&amp;nbsp;	cp      0
-&amp;nbsp;	jr      z, _done        ; yes
-&amp;nbsp;	inc     hl              ; skip 1st byte of OAM entry (obj id)
-&amp;nbsp;	ld      a, (hl)         ; get 2nd byte (obj attribute)
-&amp;nbsp;	dec     hl              ; move back to 1st byte (obj id)
-&amp;nbsp;	bit     5, a            ; it&#39;s 32*32 object if 5th bit is set
-&amp;nbsp;	jr      nz, _obj32
-_obj16:				; 16*16
-&amp;nbsp;	call    $0982		; de = ix, copy 8 bytes from (hl) to (de), ix - 8, b - 1
-&amp;nbsp;	jr      _next
-
-_obj32:				; 32*32
-&amp;nbsp;	call    $0996		; de = iy, copy 8 bytes from (hl) to (de), iy + 8, b - 1, c + 1
-&amp;nbsp;	jr      _next
-
-_done:				; sorting &amp; update finished
-&amp;nbsp;	ld      a, c		; 32*32 object count
-&amp;nbsp;	ld      ($9A00), a      ; tell the hardware how many 32*32 objects are in OAM, starting from 1st entry
-&amp;nbsp;	ret
-</code></pre><p>This approach simply limits the total number of objects being used in game to 12, avoiding the trouble of using <code>$9A01</code> register.
-Each <a href="../object_memory/">OAM</a> entry is aligned to 8 byte boundary. Additional 4 bytes are usually zero filled (empty entry) however backup of x/y coordinates related to given
-entry might be found sometimes there. This has no visible effect anyway. 32*32 entries are stored (forward) from the beginning and 16*16 entries (backward) from the end of <a href="../object_memory/">OAM</a>.
-At exit <code>$9A00</code> register is updated with value equal to number of 32*32 entries increased by 3.</p>
-<p>Using mixed method is somewhat trickier to understand. It doesn&rsquo;t require 32*32 entries to be stored at the beginning of the OAM, they must form continuous
-block nonetheless. Single 16*16 and 32*32 entries can&rsquo;t be stored interchangeably - please refer to examples below. While it might seem confusing the whole <em>start</em> / <em>end</em> assignment
-is only for explanation purpose. As long as both values are right it doesn&rsquo;t matter which register is loaded with which value, because result is the same. Only equal values have no effect.
-All possible register combinations have been tested by <a href="https://github.com/martinpiper/">Martin Piper</a> and can be viewed <a href="https://github.com/martinpiper/BombJack/blob/master/output/V2.0%20-%20Sprite%20size%20debug.gif">here</a>.</p>
 <section class="grid-3"  >
 
-<div><p><code>(1,2) $9A00 = $04, $9A01 = $05</code></p>
+<div><section class="fake_th"  >
+Joystick 1
+</section>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">OAM Address</th>
-<th style="text-align:left">16*16 OBJ</th>
-<th style="text-align:left">32*32 OBJ</th>
+<th style="text-align:left"></th>
+<th style="text-align:right"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">$9820</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Right</td>
+<td style="text-align:right">%0000000<strong>1</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">$9824</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Left</td>
+<td style="text-align:right">%000000<strong>1</strong>0</td>
 </tr>
 <tr>
-<td style="text-align:left">$9828</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">1</td>
+<td style="text-align:left">Up</td>
+<td style="text-align:right">%00000<strong>1</strong>00</td>
 </tr>
 <tr>
-<td style="text-align:left">$982C</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Down</td>
+<td style="text-align:right">%0000<strong>1</strong>000</td>
 </tr>
 <tr>
-<td style="text-align:left">$9830</td>
-<td style="text-align:left">4</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9834</td>
-<td style="text-align:left">5</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9838</td>
-<td style="text-align:left">6</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$983C</td>
-<td style="text-align:left">7</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9840</td>
-<td style="text-align:left">8</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9844</td>
-<td style="text-align:left">9</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9848</td>
-<td style="text-align:left">10</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$984C</td>
-<td style="text-align:left">11</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9850</td>
-<td style="text-align:left">12</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9854</td>
-<td style="text-align:left">13</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9858</td>
-<td style="text-align:left">14</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$985C</td>
-<td style="text-align:left">15</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9860</td>
-<td style="text-align:left">16</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9864</td>
-<td style="text-align:left">17</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9868</td>
-<td style="text-align:left">18</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$986C</td>
-<td style="text-align:left">19</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9870</td>
-<td style="text-align:left">20</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9874</td>
-<td style="text-align:left">21</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9878</td>
-<td style="text-align:left">22</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$987C</td>
-<td style="text-align:left">23</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Jump</td>
+<td style="text-align:right">%000<strong>1</strong>0000</td>
 </tr>
 </tbody>
 </table>
 </div>
 
 
-<div><p><code>(9,3) $9A00 = $0C, $9A01 = $06</code></p>
+<div><section class="fake_th"  >
+Joystick 2
+</section>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">OAM Address</th>
-<th style="text-align:left">16*16 OBJ</th>
-<th style="text-align:left">32*32 OBJ</th>
+<th style="text-align:left"></th>
+<th style="text-align:right"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">$9820</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Right</td>
+<td style="text-align:right">%0000000<strong>1</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">$9824</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Left</td>
+<td style="text-align:right">%000000<strong>1</strong>0</td>
 </tr>
 <tr>
-<td style="text-align:left">$9828</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Up</td>
+<td style="text-align:right">%00000<strong>1</strong>00</td>
 </tr>
 <tr>
-<td style="text-align:left">$982C</td>
-<td style="text-align:left">3</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Down</td>
+<td style="text-align:right">%0000<strong>1</strong>000</td>
 </tr>
 <tr>
-<td style="text-align:left">$9830</td>
-<td style="text-align:left">4</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9834</td>
-<td style="text-align:left">5</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9838</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">3</td>
-</tr>
-<tr>
-<td style="text-align:left">$983C</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9840</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">4</td>
-</tr>
-<tr>
-<td style="text-align:left">$9844</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9848</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">5</td>
-</tr>
-<tr>
-<td style="text-align:left">$984C</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9850</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">6</td>
-</tr>
-<tr>
-<td style="text-align:left">$9854</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9858</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">7</td>
-</tr>
-<tr>
-<td style="text-align:left">$985C</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9860</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">8</td>
-</tr>
-<tr>
-<td style="text-align:left">$9864</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9868</td>
-<td style="text-align:left">18</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$986C</td>
-<td style="text-align:left">19</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9870</td>
-<td style="text-align:left">20</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9874</td>
-<td style="text-align:left">21</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9878</td>
-<td style="text-align:left">22</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$987C</td>
-<td style="text-align:left">23</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">Jump</td>
+<td style="text-align:right">%000<strong>1</strong>0000</td>
 </tr>
 </tbody>
 </table>
 </div>
 
 
-<div><p><code>(4,12) $9A00=$07, $9A01=$0F</code></p>
+<div><section class="fake_th"  >
+Other
+</section>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">OAM Address</th>
-<th style="text-align:left">16*16 OBJ</th>
-<th style="text-align:left">32*32 OBJ</th>
+<th style="text-align:left"></th>
+<th style="text-align:right"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">$9820</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">P1 Coin</td>
+<td style="text-align:right">%0000000<strong>1</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">$9824</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">P2 Coin</td>
+<td style="text-align:right">%000000<strong>1</strong>0</td>
 </tr>
 <tr>
-<td style="text-align:left">$9828</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">P1 Start</td>
+<td style="text-align:right">%00000<strong>1</strong>00</td>
 </tr>
 <tr>
-<td style="text-align:left">$982C</td>
-<td style="text-align:left">3</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9830</td>
-<td style="text-align:left">4</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9834</td>
-<td style="text-align:left">5</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9838</td>
-<td style="text-align:left">6</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$983C</td>
-<td style="text-align:left">7</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9840</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">4</td>
-</tr>
-<tr>
-<td style="text-align:left">$9844</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9848</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">5</td>
-</tr>
-<tr>
-<td style="text-align:left">$984C</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9850</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">6</td>
-</tr>
-<tr>
-<td style="text-align:left">$9854</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9858</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">7</td>
-</tr>
-<tr>
-<td style="text-align:left">$985C</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9860</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">8</td>
-</tr>
-<tr>
-<td style="text-align:left">$9864</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9868</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">9</td>
-</tr>
-<tr>
-<td style="text-align:left">$986C</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9870</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">10</td>
-</tr>
-<tr>
-<td style="text-align:left">$9874</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">$9878</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">11</td>
-</tr>
-<tr>
-<td style="text-align:left">$987C</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
+<td style="text-align:left">P2 Start</td>
+<td style="text-align:right">%0000<strong>1</strong>000</td>
 </tr>
 </tbody>
 </table>
@@ -612,14 +242,21 @@ All possible register combinations have been tested by <a href="https://github.c
 
 </section>
 
-<p>This makes it quite flexible solution which can be used in a few different ways. As in previous cases it is recommended to update <a href="../object_memory/">OAM</a> first, then registers if there were
-any changes in 32*32 objects number.</p>
+<p>Joystick 1 port is also used to enable / disable Non Maskable Interrupt.</p>
+<p>⚠️ This is just a guess and has not been verified at the moment of writing.</p>
+
+<div class="tip">
+  <code>$B000</code> (Write) - NMI On / Off
+</div>
+
+<p>When NMI happens Z80 starts executing code at <code>$0066</code> address which writes <code>0</code> to the register and jumps to VBLANK procedure. At VBLANK exit it is written with <code>1</code> value.
+This seems to be solution to disable / enable NMI from code. As result another NMI is prevented from happening while VBLANK procedure is being processed.</p>
     <div class="pager">
   
     
     <div class="pager_item prev">
-      <a href="https://gitendo.github.io/bombjack/object_memory/" class="pager_link button" title="Object Attribute Memory" rel="prev">
-        <span class="pager_label">Object Attribute Memory</span>
+      <a href="https://gitendo.github.io/bombjack/color_memory/" class="pager_link button" title="Color Palette Memory" rel="prev">
+        <span class="pager_label">Color Palette Memory</span>
       </a>
     </div>
     
@@ -628,8 +265,8 @@ any changes in 32*32 objects number.</p>
   
     
     <div class="pager_item next">
-      <a href="https://gitendo.github.io/bombjack/color_memory/" class="pager_link button" title="Color Palette Memory" rel="next">
-        <span class="pager_label">Color Palette Memory</span>
+      <a href="https://gitendo.github.io/bombjack/background_select/" class="pager_link button" title="Background Picture Select" rel="next">
+        <span class="pager_label">Background Picture Select</span>
       </a>
     </div>
     
